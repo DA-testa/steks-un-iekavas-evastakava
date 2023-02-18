@@ -28,6 +28,7 @@ def find_mismatch(text):
 
 def main():
     choise = input()
+    choise.strip()
     if (choise == "F"):
         file_name = input("Enter file name: ")
         if os.path.isfile(file_name):
