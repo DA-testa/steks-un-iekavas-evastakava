@@ -1,5 +1,5 @@
 # python3
-
+import sys
 from collections import namedtuple
 
 Bracket = namedtuple("Bracket", ["char", "position"])
@@ -23,15 +23,20 @@ def find_mismatch(text):
         return opening_brackets_stack[0].position
     return "Success"
 
-def main(x):
-    if x == "F":
-        filename = input("Enter filename: ")
-        with open(filename) as file:
-            text = file.read().strip()
-    else:
+def main():
+    input_type = input("Choose F for file input, I for user input: ")
+
+    if input_type.upper() == "F":
+        file_name = input("Enter file name: ")
+        with open(file_name, "r") as file:
+            text = file.read()
+    elif input_type.upper() == "I":
         text = input("Enter bracket: ")
+    else:
+        print("Invalid input type")
+        sys.exit()
     mismatch = find_mismatch(text)
     print(mismatch)
-    
+
 if __name__ == "__main__":
     main()
