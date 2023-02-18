@@ -1,6 +1,4 @@
-
 from collections import  namedtuple
-from os import name
 import os
 
 Bracket = namedtuple("Bracket", ["char", "position"])
@@ -47,5 +45,5 @@ def new_func(text):
     print(result)
 
 
-if name == "main":
+if __name__ == "_main_":
     main()
