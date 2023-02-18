@@ -1,6 +1,7 @@
-# python3
 
-from collections import namedtuple
+from collections import  namedtuple
+from os import name
+import os
 
 Bracket = namedtuple("Bracket", ["char", "position"])
 
@@ -13,34 +14,38 @@ def find_mismatch(text):
     opening_brackets_stack = []
     for i, next in enumerate(text):
         if next in "([{":
+            opening_brackets_stack.append(Bracket(next, i+1))
+            
 
-            opening_brackets_stack.append(Bracket(next, i + 1))
-    
         if next in ")]}":
-
-            if not opening_brackets_stack or not are_matching(opening_brackets_stack[-1].char, next):
-                return i + 1
-        opening_brackets_stack.pop()
-    if opening_brackets_stack:
-        return opening_brackets_stack[0].position
+            if not are_matching(opening_brackets_stack.pop(), next) :
+                return i+1
+            
     return "Success"
 
 def main():
-    user_input = input("Choose F to input from file or I to input brackets: ")
-    if user_input == "F":
-        filename = input("Enter file name: ")
-        with open(filename) as f:
-            text = f.read().strip()
-    elif user_input == "I":
+    cmd = input()
+    if cmd == "F":
+        file_name = input("Enter file name: ")
+        if os.path.isfile(file_name):
+            with open(file_name) as f:
+                text = f.read()
+        else:
+            print("File does not exist.")
+            return
+    elif cmd == "I":
         text = input("Enter brackets: ")
-    else: 
-        print("Invalid input")
-        return
-    mismatch = find_mismatch(text)
-    if mismatch == "Success":
-        print(mismatch)
     else:
-        print(mismatch)
+        print("Invalid choice.")
+        return
+    new_func(text)
 
-if __name__ == "__main__":
+
+def new_func(text):
+    
+    result = find_mismatch(text)
+    print(result)
+
+
+if name == "main":
     main()
