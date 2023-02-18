@@ -36,7 +36,7 @@ def main():
         else:
             print("File does not exist.")
             return
-    elif (cmd == "I"):
+    elif (cmd == "A"):
         text = input("Enter brackets: ")
     else:
         print("Invalid choice " + cmd)
