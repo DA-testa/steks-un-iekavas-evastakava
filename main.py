@@ -14,10 +14,10 @@ def find_mismatch(text):
         if next in "([{":
             opening_brackets_stack.append(Bracket(next, i+1))
             
-
         if next in ")]}":
-            if not are_matching(opening_brackets_stack.pop(), next) :
+            if not  are_matching(opening_brackets_stack[-1].char, next) :
                 return i+1
+        
             
     return "Success"
 
@@ -45,5 +45,4 @@ def new_func(text):
     print(result)
 
 
-if __name__ == "_main_":
-    main()
+main()
