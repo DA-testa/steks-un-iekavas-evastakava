@@ -24,22 +24,18 @@ def find_mismatch(text):
     return "Success"
 
 def main():
-    input_type = input("Enter F for file input or I for user input: ")
-    if input_type.strip().upper == "F":
-        file_name = input("Enter file name: ")
-        if os.file_name.exists(file_name):
-            with open(file_name, "r") as file:
-            text = file.read()
-            mismatch = find_mismatch(text)
-            print(mismatch)
-    else: 
-        print("Invalid file name")
-    elif input_type.strip().upper == "I":
-        text = input("Enter text: ")
+    choice = input("Enter F for file input or I for user input: ")
+    if choice == "I":
+        text = input("Enter brackets: ")
         mismatch = find_mismatch(text)
         print(mismatch)
+    elif choice == "F":
+        with open("test1.txt") as f:
+            for line in f:
+                mismatch = find_mismatch(line.strip())
+                print(mismatch)
     else:
-        print("Invalid text")
+        print("Invalid choice")
 
     
     print(mismatch)
