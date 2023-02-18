@@ -26,9 +26,9 @@ def find_mismatch(text):
 def main():
     input_type = input("Enter F for file input or I for user input: ")
     if input_type() == "F":
-        filename = input("Enter file name: ")
-        with open(filename, "r") as f:
-            text = f.readline().rstrip()
+        file_name = input("Enter file name: ")
+        with open(file_name) as file:
+            text = file.read().strip()
     else: 
         text = input("Enter bracket: ")
     mismatch = find_mismatch(text)
