@@ -6,15 +6,18 @@ Bracket = namedtuple("Bracket", ["char", "position"])
 
 
 def are_matching(left, right):
-    return (left + right) in ["()", "[]", "{}"
+    return (left + right) in ["()", "[]", "{}"]
+
 
 def find_mismatch(text):
     opening_brackets_stack = []
     for i, next in enumerate(text):
         if next in "([{":
+
             opening_brackets_stack.append(Bracket(next, i + 1))
     
         if next in ")]}":
+
             if not opening_brackets_stack or not are_matching(opening_brackets_stack[-1].char, next):
                 return i + 1
         opening_brackets_stack.pop()
@@ -23,21 +26,21 @@ def find_mismatch(text):
     return "Success"
 
 def main():
-    choice = input("Enter F for file input or I for user input: ")
-    if choice == "I":
+    user_input = input("Choose F to input from file or I to input brackets: ")
+    if user_input == "F":
+        filename = input("Enter file name: ")
+        with open(filename) as f:
+            text = f.read().strip()
+    elif user_input == "I":
         text = input("Enter brackets: ")
-        mismatch = find_mismatch(text)
+    else: 
+        print("Invalid input")
+        return
+    mismatch = find_mismatch(text)
+    if mismatch == "Success":
         print(mismatch)
-    elif choice == "F":
-        with open("test1.txt") as f:
-            for line in f:
-                mismatch = find_mismatch(line.strip())
-                print(mismatch)
     else:
-        print("Invalid choice")
-
-    
-    print(mismatch)
+        print(mismatch)
 
 if __name__ == "__main__":
     main()
