@@ -28,7 +28,7 @@ def find_mismatch(text):
 
 def main():
     cmd = input()
-    if cmd == "F":
+    if (cmd == "F"):
         file_name = input("Enter file name: ")
         if os.path.isfile(file_name):
             with open(file_name) as f:
@@ -36,7 +36,7 @@ def main():
         else:
             print("File does not exist.")
             return
-    elif cmd is "I":
+    elif (cmd == "I"):
         text = input("Enter brackets: ")
     else:
         print("Invalid choice " + cmd)
