@@ -39,7 +39,7 @@ def main():
     elif cmd == "I":
         text = input("Enter brackets: ")
     else:
-        print("Invalid choice kkas nav ievadits pareizi")
+        print("Invalid choice")
         return
     new_func(text)
 
