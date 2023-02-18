@@ -28,7 +28,7 @@ def find_mismatch(text):
 
 def main():
     cmd = input()
-    if cmd == "F":
+    if cmd == "f":
         file_name = input("Enter file name: ")
         if os.path.isfile(file_name):
             with open(file_name) as f:
