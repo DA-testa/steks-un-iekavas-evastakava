@@ -25,13 +25,23 @@ def find_mismatch(text):
 
 def main():
     input_type = input("Enter F for file input or I for user input: ")
-    if input_type() == "F":
+    if input_type.strip().upper == "F":
         file_name = input("Enter file name: ")
-        with open(file_name) as file:
-            text = file.read().strip()
+        if os.file_name.exists(file_name):
+            with open(file_name, "r") as file:
+            text = file.read()
+            mismatch = find_mismatch(text)
+            print(mismatch)
     else: 
-        text = input("Enter bracket: ")
-    mismatch = find_mismatch(text)
+        print("Invalid file name")
+    elif input_type.strip().upper == "I":
+        text = input("Enter text: ")
+        mismatch = find_mismatch(text)
+        print(mismatch)
+    else:
+        print("Invalid text")
+
+    
     print(mismatch)
 
 if __name__ == "__main__":
